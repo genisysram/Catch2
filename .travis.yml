@@ -294,7 +294,7 @@ matrix:
     # 1/ Linux Clang Builds
     - os: linux
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
         apt:
           sources: *all_sources
@@ -363,7 +363,7 @@ matrix:
     # 2/ Linux GCC Builds
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons:
         apt:
          sources: *all_sources
@@ -476,13 +476,13 @@ matrix:
 
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons: *gcc7
       env: COMPILER='g++-7' CPP14=1
 
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons: *gcc8
       env: COMPILER='g++-8' CPP14=1
 
@@ -491,7 +491,7 @@ matrix:
     # 6/ Special builds -- examples, coverage, valgrind, etc.
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons:
         apt:
           sources: *all_sources
@@ -500,7 +500,7 @@ matrix:
 
     - os: linux
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
         apt:
           packages: ['clang-3.8', 'lcov']
@@ -511,7 +511,7 @@ matrix:
 
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons:
         apt:
           sources: *all_sources
@@ -522,20 +522,20 @@ matrix:
     # 7/ C++17 builds
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons: *gcc7
       env: COMPILER='g++-7' CPP17=1
 
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons: *gcc7
       env: COMPILER='g++-7' EXAMPLES=1 COVERAGE=1 EXTRAS=1 CPP17=1
 
     - os: linux
       dist: xenial
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               sources: *all_sources
@@ -545,7 +545,7 @@ matrix:
     - os: linux
       dist: xenial
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               sources: *all_sources
@@ -557,7 +557,7 @@ matrix:
       python:
         - "3.7"
       dist: xenial
-	  arch: ppc64le
+      arch: ppc64le
       install:
         - pip install conan-package-tools
       env:
