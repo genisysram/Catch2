@@ -291,6 +291,282 @@ matrix:
         - CONAN_DOCKER_IMAGE=conanio/gcc8
       script:
         - python .conan/build.py
+        
+        # script to run on power systems
+    # 1/ Linux Clang Builds
+    - os: linux
+      compiler: clang
+	  arch: ppc64le
+      addons:
+        apt:
+          sources: *all_sources
+          packages: ['clang-3.5']
+      env: COMPILER='clang++-3.5'
+
+    - os: linux
+      compiler: 
+	  arch: ppc64le
+      addons:
+        apt:
+          sources: *all_sources
+          packages: ['clang-3.6']
+      env: COMPILER='clang++-3.6'
+
+    # Clang 3.7 is intentionally skipped as we cannot get it easily on
+    # TravisCI container
+
+    - os: linux
+      compiler: clang
+	  arch: ppc64le
+      addons:
+        apt:
+          sources: *all_sources
+          packages: ['lcov', 'clang-3.8']
+      env: COMPILER='clang++-3.8'
+
+    - os: linux
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              sources: *all_sources
+              packages: ['clang-3.9']
+      env: COMPILER='clang++-3.9'
+
+    - os: linux
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              sources: *all_sources
+              packages: ['clang-4.0']
+      env: COMPILER='clang++-4.0'
+
+    - os: linux
+      dist: xenial
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              sources: *all_sources
+              packages: ['clang-5.0']
+      env: COMPILER='clang++-5.0'
+
+    - os: linux
+      dist: xenial
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              sources: *all_sources
+              packages: ['clang-6.0']
+      env: COMPILER='clang++-6.0'
+
+    # 2/ Linux GCC Builds
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons:
+        apt:
+         sources: *all_sources
+         packages: ['g++-4.8']
+      env: COMPILER='g++-4.8'
+
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons:
+        apt:
+          sources: *all_sources
+          packages: ['g++-4.9']
+      env: COMPILER='g++-4.9'
+
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons:
+        apt:
+          sources: *all_sources
+          packages: ['g++-5']
+      env: COMPILER='g++-5'
+
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons: &gcc6
+        apt:
+          sources: *all_sources
+          packages: ['g++-6']
+      env: COMPILER='g++-6'
+
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons: &gcc7
+        apt:
+          sources: *all_sources
+          packages: ['g++-7']
+      env: COMPILER='g++-7'
+
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons: &gcc8
+        apt:
+          sources: *all_sources
+          packages: ['g++-8']
+      env: COMPILER='g++-8'
+
+    # 3b/ Linux C++14 Clang builds
+    # Note that we need newer libstdc++ for C++14 support
+    - os: linux
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              packages: ['clang-3.8', 'libstdc++-6-dev']
+              sources:
+                  - ubuntu-toolchain-r-test
+                  - llvm-toolchain-trusty
+      env: COMPILER='clang++-3.8' CPP14=1
+
+    - os: linux
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              sources: *all_sources
+              packages: ['clang-3.9', 'libstdc++-6-dev']
+      env: COMPILER='clang++-3.9' CPP14=1
+
+    - os: linux
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              sources: *all_sources
+              packages: ['clang-4.0', 'libstdc++-6-dev']
+      env: COMPILER='clang++-4.0' CPP14=1
+
+    - os: linux
+      dist: xenial
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              sources: *all_sources
+              packages: ['clang-5.0', 'libstdc++-6-dev']
+      env: COMPILER='clang++-5.0' CPP14=1
+
+    - os: linux
+      dist: xenial
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              sources: *all_sources
+              packages: ['clang-6.0', 'libstdc++-6-dev']
+      env: COMPILER='clang++-6.0' CPP14=1
+
+
+    # 4a/ Linux C++14 GCC builds
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons: *gcc6
+      env: COMPILER='g++-6' CPP14=1
+
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons: *gcc7
+      env: COMPILER='g++-7' CPP14=1
+
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons: *gcc8
+      env: COMPILER='g++-8' CPP14=1
+
+   
+
+    # 6/ Special builds -- examples, coverage, valgrind, etc.
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons:
+        apt:
+          sources: *all_sources
+          packages: ['lcov', 'g++-7']
+      env: COMPILER='g++-7' CPP14=1 EXAMPLES=1 COVERAGE=1 EXTRAS=1
+
+    - os: linux
+      compiler: clang
+	  arch: ppc64le
+      addons:
+        apt:
+          packages: ['clang-3.8', 'lcov']
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty
+      env: COMPILER='clang++-3.8' EXAMPLES=1 COVERAGE=1 EXTRAS=1
+
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons:
+        apt:
+          sources: *all_sources
+          packages: ['valgrind', 'lcov', 'g++-7']
+      env: COMPILER='g++-7' CPP14=1 VALGRIND=1
+
+   
+    # 7/ C++17 builds
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons: *gcc7
+      env: COMPILER='g++-7' CPP17=1
+
+    - os: linux
+      compiler: gcc
+	  arch: ppc64le
+      addons: *gcc7
+      env: COMPILER='g++-7' EXAMPLES=1 COVERAGE=1 EXTRAS=1 CPP17=1
+
+    - os: linux
+      dist: xenial
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              sources: *all_sources
+              packages: ['clang-6.0', 'libstdc++-8-dev']
+      env: COMPILER='clang++-6.0' CPP17=1
+
+    - os: linux
+      dist: xenial
+      compiler: clang
+	  arch: ppc64le
+      addons:
+          apt:
+              sources: *all_sources
+              packages: ['clang-6.0', 'libstdc++-8-dev']
+      env: COMPILER='clang++-6.0' CPP17=1 EXAMPLES=1 COVERAGE=1 EXTRAS=1
+
+    # 8/ Conan
+    - language: python
+      python:
+        - "3.7"
+      dist: xenial
+	  arch: ppc64le
+      install:
+        - pip install conan-package-tools
+      env:
+        - CONAN_GCC_VERSIONS=8
+        - CONAN_DOCKER_IMAGE=conanio/gcc8
+      script:
+        - python .conan/build.py
 
 install:
   - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
