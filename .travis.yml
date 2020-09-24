@@ -303,7 +303,7 @@ matrix:
 
     - os: linux
       compiler: 
-	  arch: ppc64le
+      arch: ppc64le
       addons:
         apt:
           sources: *all_sources
@@ -315,7 +315,7 @@ matrix:
 
     - os: linux
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
         apt:
           sources: *all_sources
@@ -324,7 +324,7 @@ matrix:
 
     - os: linux
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               sources: *all_sources
@@ -333,7 +333,7 @@ matrix:
 
     - os: linux
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               sources: *all_sources
@@ -343,7 +343,7 @@ matrix:
     - os: linux
       dist: xenial
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               sources: *all_sources
@@ -353,7 +353,7 @@ matrix:
     - os: linux
       dist: xenial
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               sources: *all_sources
@@ -372,7 +372,7 @@ matrix:
 
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons:
         apt:
           sources: *all_sources
@@ -381,7 +381,7 @@ matrix:
 
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons:
         apt:
           sources: *all_sources
@@ -390,7 +390,7 @@ matrix:
 
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons: &gcc6
         apt:
           sources: *all_sources
@@ -399,7 +399,7 @@ matrix:
 
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons: &gcc7
         apt:
           sources: *all_sources
@@ -408,7 +408,7 @@ matrix:
 
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons: &gcc8
         apt:
           sources: *all_sources
@@ -419,7 +419,7 @@ matrix:
     # Note that we need newer libstdc++ for C++14 support
     - os: linux
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               packages: ['clang-3.8', 'libstdc++-6-dev']
@@ -430,7 +430,7 @@ matrix:
 
     - os: linux
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               sources: *all_sources
@@ -439,7 +439,7 @@ matrix:
 
     - os: linux
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               sources: *all_sources
@@ -449,7 +449,7 @@ matrix:
     - os: linux
       dist: xenial
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               sources: *all_sources
@@ -459,7 +459,7 @@ matrix:
     - os: linux
       dist: xenial
       compiler: clang
-	  arch: ppc64le
+      arch: ppc64le
       addons:
           apt:
               sources: *all_sources
@@ -470,7 +470,7 @@ matrix:
     # 4a/ Linux C++14 GCC builds
     - os: linux
       compiler: gcc
-	  arch: ppc64le
+      arch: ppc64le
       addons: *gcc6
       env: COMPILER='g++-6' CPP14=1
 
